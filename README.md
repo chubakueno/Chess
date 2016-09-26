@@ -1,2 +1,2 @@
 # Chess
-Chess-AA
+Implementacion de un engine basico de ajedrez
