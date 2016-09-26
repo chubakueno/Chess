@@ -1,4 +1,4 @@
-## Chess
+# Chess
 Basic chess engine implementation
-# Authors
+## Authors
 See AUTHORS.md
