@@ -1,2 +1,4 @@
-# Chess
-Implementacion de un engine basico de ajedrez
+## Chess
+Basic chess engine implementation
+# Authors
+See AUTHORS.md
