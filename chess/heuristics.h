@@ -16,7 +16,6 @@ int detectpiece(State &state,int id,int nx,int ny)
 	{
 		if (state.pieces[!id][i] & gmsk(nx, ny))
 		{
-			
 			return ReinfeldValues[i];
 		}
 	}
@@ -69,8 +68,7 @@ double calcMoves(State &state, int id)
 		}
 		pieces ^= piece;
 	}
-
-	return moves+capt;
+	return moves+capt/2;
 }
 double heuristic(State &state, int id) {
 	double material = getmaterial(state, id) - getmaterial(state, !id);
