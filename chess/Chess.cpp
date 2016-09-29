@@ -127,26 +127,5 @@ int main() {
 		tokenizeLine();
 		state = bestChild;
 	}
-		
-		//system("cls");
-		//printBoard(bestChild);
-		
-		//cout << endl << "Jugada: ";
-		//cin >> playerMove;
-		
-	
-		
-		//cout << "hojas: " << hojas << endl;
-		//printBoard(bestChild);
-		
-	
-		
-
-
-	
-	
-	
-	
-
 	getchar();
 }
