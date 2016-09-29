@@ -70,10 +70,10 @@ double calcMoves(State &state, int id)
 		pieces ^= piece;
 	}
 
-	return moves+(capt/2);
+	return moves/2+capt;
 }
 double heuristic(State &state, int id) {
 	double material = getmaterial(state, id) - getmaterial(state, !id);
 	double moves = calcMoves(state, id);
-	return material+moves;
+	return material+moves/2;
 }

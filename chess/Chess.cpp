@@ -49,28 +49,7 @@ void tokenizeLine(){
 	}
 }
 string fenMove;
-int main() {
-	while (tokens.size() == 0 || tokens[0] != "uci"){
-		tokenizeLine();
-	}
-	cout << "id name ChessUPC" << endl;
-	cout << "id author Luis Rivera, Raul Bigoria, Gonzalo Nuñez Villar" << endl;
-	cout << "uciok" << endl;
-	tokenizeLine();
-	if (!(tokens[0] == "isready")) return 0;
-	//NO INFO
-	cout << "readyok" << endl;
-	tokenizeLine();
-	if (!(tokens[0] == "ucinewgame")) return 0;
-	tokenizeLine();
-	if (!(tokens[0] == "isready")) return 0;
-	cout << "readyok" << endl;
-	tokenizeLine();
-	if (!(tokens[0] == "position")) return 0;
-	if (!(tokens[1] == "startpos")) return 0;
-	if (!(tokens[2] == "moves")) return 0;
-	
-	
+State newGame() {
 	State state;
 	for (int id = 0;id<2;++id) {
 		for (int i = 0;i<8;++i) {
@@ -101,11 +80,42 @@ int main() {
 	for (int id = 0;id<2;++id)
 		for (int j = 0;j<6;++j)
 			state.vis[id] |= state.pieces[id][j];
-	string playerMove=tokens[tokens.size()-1];
-	bestChild = state;
-	
+	return state;
+}
+int main() {
+	while (tokens.size() == 0 || tokens[0] != "uci"){
+		tokenizeLine();
+	}
+	cout << "id name ChessUPC" << endl;
+	cout << "id author Luis Rivera, Raul Bigoria, Gonzalo Nuñez Villar" << endl;
+	cout << "uciok" << endl;
+	tokenizeLine();
+	if (!(tokens[0] == "isready")) return 0;
+	//NO INFO
+	cout << "readyok" << endl;
+	tokenizeLine();
+	if (!(tokens[0] == "ucinewgame")) return 0;
+	State state = newGame();
+	tokenizeLine();
+	if (!(tokens[0] == "isready")) return 0;
+	cout << "readyok" << endl;
+	tokenizeLine();
 	while (true)
 	{
+		if (tokens.size()&&tokens[0] == "ucinewgame") {
+			tokenizeLine();
+			if (tokens.size() && tokens[0] == "isready") {
+				cout << "readyok" << endl;
+				state = newGame();
+				tokenizeLine();
+			}
+			else {
+				cout << "ERROR" << endl;
+				return 0;
+			}
+		}
+		string playerMove = tokens[tokens.size() - 1];
+		bestChild = state;
 		playerMove = tokens[tokens.size() - 1];
 		playerMove[0] = (int)(playerMove[0] - 'a'); playerMove[2] = (int)(playerMove[2] - 'a');
 		playerMove[1] = (int)(playerMove[1] - 49); playerMove[3] = (int)(playerMove[3] - 49);
@@ -122,31 +132,9 @@ int main() {
 		_BitScanForward64(&idx, aux);
 		int xold = idxold & 7, yold = idxold >> 3;
 		int x = idx & 7, y = idx >> 3;
-
 		cout << "bestmove " << char(xold + 'a') << yold + 1 << char(x + 'a') << y + 1 << endl;
 		tokenizeLine();
 		state = bestChild;
 	}
-		
-		//system("cls");
-		//printBoard(bestChild);
-		
-		//cout << endl << "Jugada: ";
-		//cin >> playerMove;
-		
-	
-		
-		//cout << "hojas: " << hojas << endl;
-		//printBoard(bestChild);
-		
-	
-		
-
-
-	
-	
-	
-	
-
 	getchar();
 }
