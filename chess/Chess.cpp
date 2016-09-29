@@ -117,6 +117,7 @@ int main() {
 		bestChild = state;
 		tokenizeLine();
 		if (!(tokens[0] == "go")) return 0;
+		alfabeta(bestChild, 0, -INF, +INF, true);
 		Bitboard aux = state.vis[0] | bestChild.vis[0];
 		Bitboard old = bestChild.vis[0] ^ aux;
 		aux = state.vis[0] ^ aux;
@@ -125,7 +126,7 @@ int main() {
 		_BitScanForward64(&idx, aux);
 		int xold = idxold & 7, yold = idxold >> 3;
 		int x = idx & 7, y = idx >> 3;
-		alfabeta(bestChild, 0, -INF, +INF, true);
+		
 		cout << "bestmove " << char(xold + 'a') << yold + 1 << char(x + 'a') << y + 1 << endl;
 		tokenizeLine();
 	
