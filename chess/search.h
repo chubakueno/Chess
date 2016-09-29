@@ -6,7 +6,7 @@
 #include <algorithm>
 using namespace std;
 State bestChild;
-int maxdepth = 5,hojas=0;
+int maxdepth = 6,hojas=0;
 double alfabeta(State &state,
 	int depth,
 	double a,
