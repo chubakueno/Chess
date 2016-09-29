@@ -25,7 +25,7 @@ const int jumpDisp[2][8][2] = {
 		{ +1,+1 },
 	}
 };
-const int slideDisp[12][2] = {
+const int slideDisp[8][2] = {
 	{ -1,+0 },
 	{ +1,+0 },
 	{ +0,-1 },
@@ -35,7 +35,7 @@ const int slideDisp[12][2] = {
 	{ +1,-1 },
 	{ +1,+1 },
 };
-const int slidesIdx[4][2] = {
+const int slidesIdx[3][2] = {
 	{ 0,4 },//ROOK
 	{ 0,8 },//QUEEN
 	{ 4,8 },//BISHOP
