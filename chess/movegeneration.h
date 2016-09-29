@@ -107,12 +107,13 @@ vector<State> generate(State state, int id) {
 			if (x<7 && movePiece(tmp, id, PAWN, x, y, x + 1, ny) == CAPTURE)
 				states.push_back(tmp);
 			tmp = state;
-			if (movePiece(tmp, id, PAWN, x, y, x, ny) == EMPTY)
+			if (movePiece(tmp, id, PAWN, x, y, x, ny) == EMPTY) {
 				states.push_back(tmp);
-			tmp = state;
-			if (((id == 0 && y == 6) || (id == 1 && y == 1)) &&
-				movePiece(tmp, id, PAWN, x, y, x, y + 2 * disp) == EMPTY)
-				states.push_back(tmp);
+				tmp = state;
+				if (((id == 0 && y == 6) || (id == 1 && y == 1)) &&
+					movePiece(tmp, id, PAWN, x, y, x, y + 2 * disp) == EMPTY)
+					states.push_back(tmp);
+			}
 		}
 		pieces ^= piece;
 		

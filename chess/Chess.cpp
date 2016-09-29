@@ -99,9 +99,9 @@ int main() {
 	tokenizeLine();
 	if (!(tokens[0] == "isready")) return 0;
 	cout << "readyok" << endl;
-	tokenizeLine();
 	while (true)
 	{
+		tokenizeLine();
 		if (tokens.size()&&tokens[0] == "ucinewgame") {
 			tokenizeLine();
 			if (tokens.size() && tokens[0] == "isready") {
@@ -133,7 +133,7 @@ int main() {
 		int xold = idxold & 7, yold = idxold >> 3;
 		int x = idx & 7, y = idx >> 3;
 		cout << "bestmove " << char(xold + 'a') << yold + 1 << char(x + 'a') << y + 1 << endl;
-		tokenizeLine();
+		printBoard(bestChild);
 		state = bestChild;
 	}
 	getchar();
