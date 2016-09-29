@@ -69,7 +69,7 @@ int main() {
 	if (!(tokens[0] == "position")) return 0;
 	if (!(tokens[1] == "startpos")) return 0;
 	if (!(tokens[2] == "moves")) return 0;
-	fenMove = tokens[3];
+	
 	
 	State state;
 	for (int id = 0;id<2;++id) {
@@ -104,13 +104,9 @@ int main() {
 	string playerMove=tokens[tokens.size()-1];
 	bestChild = state;
 	
-	
-		
-		//system("cls");
-		//printBoard(bestChild);
-		
-		//cout << endl << "Jugada: ";
-		//cin >> playerMove;
+	while (true)
+	{
+		playerMove = tokens[tokens.size() - 1];
 		playerMove[0] = (int)(playerMove[0] - 'a'); playerMove[2] = (int)(playerMove[2] - 'a');
 		playerMove[1] = (int)(playerMove[1] - 49); playerMove[3] = (int)(playerMove[3] - 49);
 		movePlayer(state, playerMove[0], playerMove[1], playerMove[2], playerMove[3]);
@@ -126,14 +122,23 @@ int main() {
 		_BitScanForward64(&idx, aux);
 		int xold = idxold & 7, yold = idxold >> 3;
 		int x = idx & 7, y = idx >> 3;
-		
+
 		cout << "bestmove " << char(xold + 'a') << yold + 1 << char(x + 'a') << y + 1 << endl;
 		tokenizeLine();
+		state = bestChild;
+	}
+		
+		//system("cls");
+		//printBoard(bestChild);
+		
+		//cout << endl << "Jugada: ";
+		//cin >> playerMove;
+		
 	
 		
 		//cout << "hojas: " << hojas << endl;
 		//printBoard(bestChild);
-		state = bestChild;
+		
 	
 		
 
