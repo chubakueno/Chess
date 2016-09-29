@@ -56,7 +56,20 @@ int movePiece(State& state, int id, int p, int x, int y, int nx, int ny) {
 	return rval;
 }
 
+void movePlayer(State& state,int x,int y,int nx,int ny)
+{
+	int p;
+	for (int i = 0; i < 6; i++)
+	{
+		if (state.pieces[1][i] & gmsk(x, y))
+		{
 
+			p = i;
+			break;
+		}
+	}
+	movePiece(state,1, p, x, y, nx, ny);
+}
 vector<State> generate(State state, int id) {
 	vector<State> states;
 	Bitboard pieces, piece;
@@ -102,6 +115,7 @@ vector<State> generate(State state, int id) {
 				states.push_back(tmp);
 		}
 		pieces ^= piece;
+		
 	}
 	//KNIGHT,KING move generation
 	for (int p = 4;p <= 5;++p) {
