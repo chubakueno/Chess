@@ -55,6 +55,8 @@ int movePiece(State& state, int id, int p, int x, int y, int nx, int ny) {
 	state.vis[id] ^= old | act;
 	return rval;
 }
+
+
 vector<State> generate(State state, int id) {
 	vector<State> states;
 	Bitboard pieces, piece;

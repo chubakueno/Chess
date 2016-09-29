@@ -26,7 +26,6 @@ double alfabeta(State &state,
 				v = tv;
 				if (depth == 0) bestChild = children[i];
 			}
-			v = max(v, tv);
 			a = max(a, v);
 			if (b <= a) break;
 		}
